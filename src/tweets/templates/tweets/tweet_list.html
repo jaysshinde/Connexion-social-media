@@ -4,6 +4,28 @@
 #tweet-container {
 
 }
+ .bg-image {
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+
+.ct-btn-scroll {
+  width: 49px;
+  height: 49px;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding-top: 500px;
+  z-index: 9;
+  border-radius: 50%;
+  -webkit-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
+}
+
+
 </style>
 
 {% block script %}
@@ -20,31 +42,67 @@ $(document).ready(function(){
 
    
     <div class='row'>
-        <div class='col-sm-3 col-xs-12'>
-        <h1>{{ request.user }}</h1>
+        <!--<div class='col-sm-3 col-xs-12' style="position: absolute; top: 25%; left: 0%;">-->
+            <div class='col-sm-9' style="position: absolute; top: 25%; left: 15%;">
+            <div class="jumbotron jumbotron-trans" style="color:white; background-color: black;">
+                <h2> Hi, {{ request.user }}</h2>
+                <hr/>
+            <h3>Welcome to your homepage</h3>
         <hr/>
-         <br/>
-        <p class='lead'>Recommended Users</p>
+        <h3>Recommended Users</h3>
         {% recommended request.user %}
-        </div>
 
-        <div class='col-sm-9 '>
+        </div>
+                <a class="ct-btn-scroll ct-js-btn-scroll" href="#section2" style="text-align:center;"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"></a>
+
+            </div>
+        <div class='col-sm-9 ' style="position: absolute; top: 120%; left: 15%;" id="section2" >
              {% if not request.GET.q %}
+
                 <div class=''>
+                     <div class="jumbotron jumbotron-trans" style="color:white; background-color: #000;">
+                         <h3>Share what's on your mind</h3>
                     
                     {% include "tweets/form.html" with form=create_form action_url=create_url btn_title='Tweet' form_class='tweet-form' %}
 
-                </div>
-                <hr/>
-            {% endif %}
 
+                    </div>
+                    <hr/>
+            {% endif %}
+                <div class="jumbotron jumbotron-trans" style="color:white; background-color: #000;" >
+                    <h3>Post Feed</h3>
           <div id='tweet-container' data-url='/api/tweet/'>
             
           </div>
+                </div>
+           </div>
           <a href='#' id='loadmore'>Load More Tweets</a>
 
 
         </div>
     </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("a").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+        window.location.hash = hash;
+      });
+    }
+  });
+});
+</script>
+
+
+
+
 
 {% endblock content %}

@@ -18,6 +18,7 @@ class UserRegisterView(FormView):
     form_class = UserRegisterForm
     success_url = '/login'
 
+
     def form_valid(self, form):
         username = form.cleaned_data.get("username")
         email = form.cleaned_data.get("email")

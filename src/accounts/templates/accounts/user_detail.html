@@ -12,8 +12,9 @@ $(document).ready(function(){
 
 {% block content %}
 <div class='row'>
-    <div class='col-sm-3 col-xs-12'>
-        <h1>{{ object.username }} </h1>
+    <div class='col-sm-3 col-xs-12' style="position: absolute; top: 10%; left: 0%;">
+        <div class="jumbotron jumbotron-trans" style="color:white; background-color: black;">
+        <h3>{{ object.username }} </h3>
         <hr/>
         <p>Followers: {{ object.followed_by.all.count }}</p>
         <p>
@@ -22,40 +23,41 @@ $(document).ready(function(){
                 </a>
         </p>
          <hr/>
-          <h1>Following <small>{{ object.profile.get_following.count }}</small></h1>
+          <h3>Following <small>{{ object.profile.get_following.count }}</small></h3>
 
              {% for user in object.profile.get_following %}
              <a href='/{{ user.username }}'>{{ user.username }}</a><br/>
              {% empty %}
-             <h4>Not following any users</h4>
+             <p>Not following any users</p>
              {% endfor %}
 
           <hr/>
-          <h1>Followed By</h1>
+          <h3>Followed By</h3>
              {% for profile in object.followed_by.all %}
              <a href='/{{ profile.user.username }}'>{{ profile.user.username }}</a><br/>
              {% empty %}
-             <h4>Not followed by any users</h4>
+             <p>Not followed by any users</p>
              {% endfor %}
 
           <hr/>
-          
-
+    </div>
 
     </div>
-    <div class='col-sm-9 col-xs-12'>
-         <h1>Tweets</h1>
+    <div class='col-sm-9 col-xs-12' style="position: absolute; top: 10%; left: 25%;">
+       <div class="jumbotron jumbotron-trans" style="color:white; background-color: black; width: fit-content;">
+
+         <h3>Tweets</h3>
           <div id='tweet-container' data-url='/api/{{ object.username }}/tweet/'>
             
           </div>
           <a href='#' id='loadmore'>Load More Tweets</a>
           
-      
+    </div>
+    </div>
         
 
-     </div>
-
 </div>
+
 
 {% endblock content %}
 

@@ -4,6 +4,9 @@
 #tweet-container {
 
 }
+
+
+
 </style>
 
 {% block script %}
@@ -20,25 +23,30 @@ $(document).ready(function(){
 
    
     <div class='row'>
-        <div class='col-sm-12'>
+        <div class='col-sm-12' style="position: absolute; top: 20%; left: 0%;">
                {% if request.GET.q %}
-                <p class='lead'>Results for {{ request.GET.q }}</p>
+                <h2 class='lead' style="color: white;">Results for '{{ request.GET.q }}'</h2>
                 <hr/>
                {% endif %}
         </div>
-        <div class='col-sm-9 '>
-          <h1>Tweets</h1>
-          <hr/>
 
+        <div class='col-sm-9' style="position: absolute; top: 35%; left: 5%";>
+            <div class="jumbotron jumbotron-trans" style="width: 700px;">
+          <h2>Posts</h2>
+          <hr/>
           <div id='tweet-container' data-url='/api/search/'>
             
           </div>
+            </div>
           <a href='#' id='loadmore'>Load More Tweets</a>
 
 
         </div>
-        <div class='col-sm-3'>
-          <h1>Users</h1>
+
+        <div class='col-sm-3' style="position: absolute; top: 35%; left: 70%;">
+
+        <div class="jumbotron jumbotron-trans">
+          <h2>Users</h2>
            <hr/>
           {% for user in users %}
             <a href='/{{ user.username}}/'>{{ user.username}}</a><br/>
@@ -47,6 +55,6 @@ $(document).ready(function(){
           <p>No users found</p>
           {% endfor %}
         </div>
-    </div>
+        </div>
 
 {% endblock content %}

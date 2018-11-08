@@ -7,14 +7,52 @@
 
 
 {% block content %}
+
+<style>
+    .bg-image {
+  /* The image used */
+  background-image: url("https://scontent-atl3-1.cdninstagram.com/vp/251c78b3c164a2b4bfb51ee34b5fc00d/5C3C8537/t51.2885-15/e35/39134930_2069800753031586_4013788143751790592_n.jpg");
+
+  /* Add the blur effect */
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+
+  /* Full height */
+  height: 100%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+    .jumbotron-trans
+    {
+         opacity: 0.75;
+         background: #000;
+    }
+    .jumbotron
+    {
+        color: white;
+    }
+
+
+</style>
+
+
+
 <div class='row'>
-    <div class='col-sm-6 col-sm-offset-3'>
-        <h1>Register</h1>
+    <div class='col-sm-6 col-sm-offset-3' style="position: absolute; top: 25%; left: 0%;">
+        <div class="jumbotron jumbotron-trans">
+            <h1>Register</h1>
                 <form class='form {% if form_class %}{{ form_class }}{% endif %}' method='POST' action="{% if action_url %}{{ action_url }}{% endif %}">
-           {% csrf_token %}
-            {{ form|crispy }}
-            <input class='btn btn-primary' type="submit" value="Register" />
-        </form>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input class='btn btn-primary' type="submit" value="Register" />
+                </form>
+        </div>
     </div>
 </div>
 {% endblock content %}
