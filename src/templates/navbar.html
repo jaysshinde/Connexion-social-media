@@ -14,7 +14,9 @@
       </button>
       <a class="navbar-brand" href="{% url 'home' %}">Connexion</a>
     </div>
-    {% include "tweets/search_form.html" %}
+    {% if request.user.is_authenticated %}
+        {% include "tweets/search_form.html" %}
+      {% endif %}
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       {% if request.user.is_authenticated %}

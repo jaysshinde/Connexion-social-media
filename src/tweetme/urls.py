@@ -26,6 +26,8 @@ from hashtags.views import HashTagView
 from tweets.api.views import SearchTweetAPIView
 from tweets.views import TweetListView
 from .views import home, SearchView
+from django_private_chat import urls as django_private_chat_urls
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls), #admin/
@@ -40,6 +42,7 @@ urlpatterns = [
     url(r'^register/$', UserRegisterView.as_view(), name='register'), #/
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^', include('accounts.urls', namespace='profiles')),
+    url(r'^', include('django_private_chat.urls')),
 ]
 
 

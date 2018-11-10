@@ -12,12 +12,14 @@ $(document).ready(function(){
 
 {% block content %}
 <div class='row'>
-    <div class='col-sm-3 col-xs-12' style='background-color:yellow;'>
-        <h1>{{ object.user }} </h1>
+    <div class='col-sm-3 col-xs-12' style=' position: absolute; top: 10%; left: 0%'>
+        <h1>{{ object.user }}'s Posts </h1>
     </div>
-    <div class='col-sm-9 col-xs-12'>
+    <div class='col-sm-9 col-xs-12'  style="position: absolute; top: 10%; left: 20%;">
+                <div class="jumbotron jumbotron-trans" style="color: lightblue; background-color: black;">
         <div id='tweet-container'>
         </div>
+                </div>
     </div>
 
 </div>

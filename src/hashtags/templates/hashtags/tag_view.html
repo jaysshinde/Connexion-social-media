@@ -26,15 +26,17 @@ $(document).ready(function(){
                 <hr/>
                {% endif %}
         </div>
-        <div class='col-sm-8 col-sm-offset-2'>
-          <h1>Tweets</h1>
+        <div class='col-sm-8 col-sm-offset-2' style="position: absolute; top: 20%; left: 0%;">
+            <div class="jumbotron jumbotron-trans">
+
+          <h2>Posts on '#{{obj.tag}}'</h2>
           <hr/>
 
           <div id='tweet-container' data-url='/api/tags/{{ obj.tag }}/'>
             
           </div>
           <a href='#' id='loadmore'>Load More Tweets</a>
-
+            </div>
 
         </div>
     </div>
