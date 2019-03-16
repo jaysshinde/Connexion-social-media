@@ -1,1 +1,1 @@
-Connexion Social Media app made with django
+Connexion is a social media website for college students.
